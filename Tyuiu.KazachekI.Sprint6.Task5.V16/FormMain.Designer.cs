@@ -25,7 +25,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
             this.buttonLoad.Text = "Загрузить данные";
             this.buttonLoad.Location = new Point(20, 20);
             this.buttonLoad.Size = new Size(160, 30);
-            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
+            this.buttonLoad.Click += new EventHandler(this.buttonLoad_Click);
 
             // dataGridViewAll
             this.dataGridViewAll.Location = new Point(20, 80);
@@ -61,7 +61,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
             this.Controls.Add(this.pictureBoxChart);
             this.Controls.Add(this.labelAll);
             this.Controls.Add(this.labelPositive);
-            this.Text = "Спринт #6 | Task 5 | Вариант 16";
+            this.Text = "Спринт 6 | Таск 5 | Вариант 16 | Казачек И.";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;

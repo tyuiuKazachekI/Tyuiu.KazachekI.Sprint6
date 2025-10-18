@@ -22,6 +22,8 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
             try
             {
                 string path = @"C:\Users\Иван\source\repos\Tyuiu.KazachekI.Sprint6\Sprint6Task5\InPutDataFileTask5V16.txt";
+
+                // Загружаем положительные числа сразу
                 positives = ds.LoadFromDataFile(path);
 
                 dataGridViewAll.Rows.Clear();
@@ -29,8 +31,8 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
 
                 foreach (double val in positives)
                 {
-                    dataGridViewAll.Rows.Add(val);      // Все положительные в первой таблице
-                    dataGridViewPositive.Rows.Add(val); // Положительные в отдельной таблице
+                    dataGridViewAll.Rows.Add(val);
+                    dataGridViewPositive.Rows.Add(val);
                 }
 
                 pictureBoxChart.Refresh();
