@@ -1,36 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using tyuiu.cources.programming.interfaces.Sprint6;
+using System.Collections.Generic;
 
 namespace Tyuiu.KazachekI.Sprint6.Task5.V16.Lib
 {
-    public class DataService : ISprint6Task5V16
+    public class DataService
     {
         public double[] LoadFromDataFile(string path)
         {
-            if (!File.Exists(path))
-                throw new FileNotFoundException("Файл не найден.", path);
+            string text = File.ReadAllText(path);
+            string[] parts = text.Split(new char[] { ' ', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries);
 
-            string content = File.ReadAllText(path);
-            string[] parts = content.Split(new char[] { ' ', '\n', '\r', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-
-            List<double> numbers = new List<double>();
-            foreach (string p in parts)
+            List<double> positives = new List<double>();
+            foreach (string part in parts)
             {
-                if (double.TryParse(p, out double val))
+                if (double.TryParse(part, out double num) && num > 0)
                 {
-                    numbers.Add(Math.Round(val, 3));
+                    positives.Add(Math.Round(num, 3));
                 }
             }
 
-            return numbers.ToArray();
-        }
-
-        public double[] GetPositiveNumbers(double[] data)
-        {
-            return data.Where(x => x > 0).ToArray();
+            return positives.ToArray();
         }
     }
 }

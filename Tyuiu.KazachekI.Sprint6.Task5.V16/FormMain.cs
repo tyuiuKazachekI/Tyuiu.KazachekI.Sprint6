@@ -22,18 +22,16 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
             try
             {
                 string path = @"C:\Users\Иван\source\repos\Tyuiu.KazachekI.Sprint6\Sprint6Task5\InPutDataFileTask5V16.txt";
-
-                double[] all = ds.LoadFromDataFile(path);
-                positives = ds.GetPositiveNumbers(all);
+                positives = ds.LoadFromDataFile(path);
 
                 dataGridViewAll.Rows.Clear();
                 dataGridViewPositive.Rows.Clear();
 
-                foreach (double val in all)
-                    dataGridViewAll.Rows.Add(val);
-
                 foreach (double val in positives)
-                    dataGridViewPositive.Rows.Add(val);
+                {
+                    dataGridViewAll.Rows.Add(val);      // Все положительные в первой таблице
+                    dataGridViewPositive.Rows.Add(val); // Положительные в отдельной таблице
+                }
 
                 pictureBoxChart.Refresh();
             }
