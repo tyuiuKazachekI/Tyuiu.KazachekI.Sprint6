@@ -14,7 +14,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task6.V19.Lib
             var words = text.Split(new char[] { ' ', '\t', '\n', '\r' },
                                     System.StringSplitOptions.RemoveEmptyEntries);
 
-            var filtered = words.Where(w => w.Contains('l') || w.Contains('L'));
+            var filtered = words.Where(w => w.Contains('l')); // только маленькая 'l'
 
             return string.Join(" ", filtered);
         }
