@@ -35,6 +35,8 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
             this.dataGridViewAll.Size = new System.Drawing.Size(260, 250);
             this.dataGridViewAll.ColumnCount = 1;
             this.dataGridViewAll.Columns[0].HeaderText = "Все числа";
+            this.dataGridViewAll.RowHeadersVisible = false;
+            this.dataGridViewAll.AllowUserToAddRows = false;
 
             // 
             // dataGridViewPositive
@@ -43,18 +45,20 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
             this.dataGridViewPositive.Size = new System.Drawing.Size(260, 250);
             this.dataGridViewPositive.ColumnCount = 1;
             this.dataGridViewPositive.Columns[0].HeaderText = "Положительные";
+            this.dataGridViewPositive.RowHeadersVisible = false;
+            this.dataGridViewPositive.AllowUserToAddRows = false;
 
             // 
             // labelAll
             // 
             this.labelAll.Location = new System.Drawing.Point(20, 60);
-            this.labelAll.Text = "Все значения";
+            this.labelAll.Text = "Все значения:";
 
             // 
             // labelPositive
             // 
             this.labelPositive.Location = new System.Drawing.Point(300, 60);
-            this.labelPositive.Text = "Положительные значения";
+            this.labelPositive.Text = "Положительные значения:";
 
             // 
             // pictureBoxChart
@@ -74,7 +78,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
             this.Controls.Add(this.pictureBoxChart);
             this.Controls.Add(this.labelAll);
             this.Controls.Add(this.labelPositive);
-            this.Text = "Спринт #6 | Task 5 | Вариант 16";
+            this.Text = "Спринт #6 | Task 5 | Вариант 16 | Казачек И.";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;

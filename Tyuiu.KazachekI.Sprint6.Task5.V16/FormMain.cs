@@ -22,6 +22,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
             try
             {
                 string path = @"C:\Users\Иван\source\repos\Tyuiu.KazachekI.Sprint6\Sprint6Task5\InPutDataFileTask5V16.txt";
+
                 double[] all = ds.LoadFromDataFile(path);
                 positives = ds.GetPositiveNumbers(all);
 
@@ -38,7 +39,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка: " + ex.Message);
+                MessageBox.Show("Ошибка: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -47,6 +48,8 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
             if (positives.Length == 0) return;
 
             Graphics g = e.Graphics;
+            g.Clear(Color.White);
+
             int x = 20, y = 20;
             int barHeight = 20;
             int maxWidth = pictureBoxChart.Width - 60;
