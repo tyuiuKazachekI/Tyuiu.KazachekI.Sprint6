@@ -1,0 +1,4 @@
+Hello world! This is a simple text file.
+We will collect all words that contain the letter l.
+Some words like "apple", "ball", "library" should appear.
+Others like "test", "computer", "keyboard" will not.
