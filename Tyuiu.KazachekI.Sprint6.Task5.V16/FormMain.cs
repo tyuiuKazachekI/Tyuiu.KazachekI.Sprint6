@@ -21,7 +21,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
         {
             try
             {
-                string path = @"C:\Users\Иван\source\repos\Tyuiu.KazachekI.Sprint6\DataSprint5\InPutDataFileTask5V16.txt";
+                string path = @"C:\Users\Иван\source\repos\Tyuiu.KazachekI.Sprint6\Sprint6Task5\InPutDataFileTask5V16.txt";
                 double[] all = ds.LoadFromDataFile(path);
                 positives = ds.GetPositiveNumbers(all);
 
