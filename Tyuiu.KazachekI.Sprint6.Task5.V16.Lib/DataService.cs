@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using tyuiu.cources.programming.interfaces;
+using tyuiu.cources.programming.interfaces.Sprint6;
 
 namespace Tyuiu.KazachekI.Sprint6.Task5.V16.Lib
 {
-    public class DataService
+    public class DataService: ISprint6Task5V16
     {
         public double[] LoadFromDataFile(string path)
         {
