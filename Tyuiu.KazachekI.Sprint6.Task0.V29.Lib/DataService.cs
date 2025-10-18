@@ -7,7 +7,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task0.V29.Lib
     {
         public double Calculate(int x)
         {
-            double result = (Math.Pow(x, 3) - 2) / (4 * Math.Pow(x, 2)) ;
+            double result = (Math.Pow(x, 3) - 1) / (4 * Math.Pow(x, 2)) ;
             return Math.Round(result, 3);
         }
     }
