@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -21,25 +21,36 @@ namespace Tyuiu.KazachekI.Sprint6.Task5.V16
         {
             try
             {
-                string path = @"C:\Users\����\source\repos\Tyuiu.KazachekI.Sprint6\Sprint6Task5\InPutDataFileTask5V16.txt";
+                // ✅ Укажем точный путь к файлу
+                string path = @"C:\Users\Иван\source\repos\Tyuiu.KazachekI.Sprint6\Sprint6Task5\InPutDataFileTask5V16.txt";
 
-                // ��������� ������������� ����� �����
+                // Загружаем данные
                 positives = ds.LoadFromDataFile(path);
 
+                // Очищаем таблицы
                 dataGridViewAll.Rows.Clear();
                 dataGridViewPositive.Rows.Clear();
 
+                // Если файл пустой
+                if (positives.Length == 0)
+                {
+                    MessageBox.Show("В файле нет положительных чисел.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Добавляем значения
                 foreach (double val in positives)
                 {
                     dataGridViewAll.Rows.Add(val);
                     dataGridViewPositive.Rows.Add(val);
                 }
 
+                // Обновляем график
                 pictureBoxChart.Refresh();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("������: " + ex.Message, "������", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ошибка загрузки: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
