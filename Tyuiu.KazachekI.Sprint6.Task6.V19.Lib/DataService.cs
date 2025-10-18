@@ -10,15 +10,12 @@ namespace Tyuiu.KazachekI.Sprint6.Task6.V19.Lib
         {
             if (!File.Exists(path)) return string.Empty;
 
-            // Считаем весь текст и разобьем на слова по пробелам
             string text = File.ReadAllText(path);
             var words = text.Split(new char[] { ' ', '\t', '\n', '\r' },
                                     System.StringSplitOptions.RemoveEmptyEntries);
 
-            // Оставим только слова, содержащие 'l' или 'L'
             var filtered = words.Where(w => w.Contains('l') || w.Contains('L'));
 
-            // Объединим в одну строку через пробел
             return string.Join(" ", filtered);
         }
     }
