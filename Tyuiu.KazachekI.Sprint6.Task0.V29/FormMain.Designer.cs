@@ -52,6 +52,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task0.V29
             labelTask_KI.Location = new Point(10, 80);
             labelTask_KI.Size = new Size(480, 40);
             labelTask_KI.Text = "Вычислить значение функции по формуле при x = 3.";
+            labelTask_KI.AutoEllipsis = true;
 
             groupBoxOutput_KI.Controls.Add(textBoxResult);
             groupBoxOutput_KI.Location = new Point(10, 150);

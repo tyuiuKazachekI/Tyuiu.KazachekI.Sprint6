@@ -1,69 +1,157 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Tyuiu.KazachekI.Sprint6.Task6.V19
 {
     partial class FormMain
     {
-        private Button buttonLoad;
-        private Button buttonProcess;
+        private System.ComponentModel.IContainer components = null;
+
+        private GroupBox groupBoxTask;
+        private Label labelTask;
+
+        private GroupBox groupBoxIn;
+        private GroupBox groupBoxOut;
+
         private TextBox textBoxIn;
         private TextBox textBoxOut;
-        private Label labelIn;
-        private Label labelOut;
+
+        private FlowLayoutPanel panelButtons;
+        private Button buttonLoad;
+        private Button buttonProcess;
+        private Button buttonSave;
+        private Button buttonInfo;
+
+        private Label labelFileInfo;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && components != null)
+                components.Dispose();
+            base.Dispose(disposing);
+        }
 
         private void InitializeComponent()
         {
-            this.buttonLoad = new Button();
-            this.buttonProcess = new Button();
-            this.textBoxIn = new TextBox();
-            this.textBoxOut = new TextBox();
-            this.labelIn = new Label();
-            this.labelOut = new Label();
+            components = new System.ComponentModel.Container();
+
+            groupBoxTask = new GroupBox();
+            labelTask = new Label();
+
+            groupBoxIn = new GroupBox();
+            groupBoxOut = new GroupBox();
+
+            textBoxIn = new TextBox();
+            textBoxOut = new TextBox();
+
+            panelButtons = new FlowLayoutPanel();
+
+            buttonLoad = new Button();
+            buttonProcess = new Button();
+            buttonSave = new Button();
+            buttonInfo = new Button();
+
+            labelFileInfo = new Label();
+
+            SuspendLayout();
+
+            // groupBoxTask
+            groupBoxTask.Text = "Условия задачи";
+            groupBoxTask.Dock = DockStyle.Top;
+            groupBoxTask.Height = 80;
+
+            labelTask.Text = "Загрузить текстовый файл и вывести все слова, содержащие букву 'l'.";
+            labelTask.Dock = DockStyle.Fill;
+            labelTask.Padding = new Padding(10);
+
+            groupBoxTask.Controls.Add(labelTask);
+
+            // panelButtons
+            panelButtons.Dock = DockStyle.Top;
+            panelButtons.Height = 60;
+            panelButtons.Padding = new Padding(10);
+            panelButtons.FlowDirection = FlowDirection.LeftToRight;
+
+            string imgPath = @"C:\Users\Иван\source\repos\Tyuiu.KazachekI.Sprint6\img\";
+
+            // Buttons size
+            Size btnSize = new Size(45, 45);
 
             // buttonLoad
-            this.buttonLoad.Text = "Загрузить файл";
-            this.buttonLoad.Location = new System.Drawing.Point(20, 20);
-            this.buttonLoad.Size = new System.Drawing.Size(120, 30);
-            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
+            buttonLoad.Size = btnSize;
+            buttonLoad.BackgroundImage = Image.FromFile(imgPath + "folder_add.png");
+            buttonLoad.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonLoad.Click += buttonLoad_Click;
 
             // buttonProcess
-            this.buttonProcess.Text = "Обработать текст";
-            this.buttonProcess.Location = new System.Drawing.Point(160, 20);
-            this.buttonProcess.Size = new System.Drawing.Size(140, 30);
-            this.buttonProcess.Click += new System.EventHandler(this.buttonProcess_Click);
+            buttonProcess.Size = btnSize;
+            buttonProcess.BackgroundImage = Image.FromFile(imgPath + "page_white_go.png");
+            buttonProcess.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonProcess.Enabled = false;
+            buttonProcess.Click += buttonProcess_Click;
 
-            // textBoxIn
-            this.textBoxIn.Location = new System.Drawing.Point(20, 80);
-            this.textBoxIn.Size = new System.Drawing.Size(400, 120);
-            this.textBoxIn.Multiline = true;
-            this.textBoxIn.ScrollBars = ScrollBars.Vertical;
+            // buttonSave
+            buttonSave.Size = btnSize;
+            buttonSave.BackgroundImage = Image.FromFile(imgPath + "save.png");
+            buttonSave.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonSave.Enabled = false;
+            buttonSave.Click += buttonSave_Click;
 
-            // textBoxOut
-            this.textBoxOut.Location = new System.Drawing.Point(20, 230);
-            this.textBoxOut.Size = new System.Drawing.Size(400, 120);
-            this.textBoxOut.Multiline = true;
-            this.textBoxOut.ScrollBars = ScrollBars.Vertical;
+            // buttonInfo
+            buttonInfo.Size = btnSize;
+            buttonInfo.BackgroundImage = Image.FromFile(imgPath + "help.png");
+            buttonInfo.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonInfo.Click += buttonInfo_Click;
 
-            // labelIn
-            this.labelIn.Text = "Содержимое файла";
-            this.labelIn.Location = new System.Drawing.Point(20, 60);
+            // add to panel
+            panelButtons.Controls.Add(buttonLoad);
+            panelButtons.Controls.Add(buttonProcess);
+            panelButtons.Controls.Add(buttonSave);
+            panelButtons.Controls.Add(buttonInfo);
 
-            // labelOut
-            this.labelOut.Text = "Слова с буквой 'l'";
-            this.labelOut.Location = new System.Drawing.Point(20, 210);
+            // groupBoxIn (left)
+            groupBoxIn.Text = "Исходный текст";
+            groupBoxIn.Dock = DockStyle.Left;
+            groupBoxIn.Width = 480;
 
-            // FormMain
-            this.ClientSize = new System.Drawing.Size(460, 370);
-            this.Controls.Add(this.buttonLoad);
-            this.Controls.Add(this.buttonProcess);
-            this.Controls.Add(this.textBoxIn);
-            this.Controls.Add(this.textBoxOut);
-            this.Controls.Add(this.labelIn);
-            this.Controls.Add(this.labelOut);
-            this.Text = "Спринт 6 | Таск 6 | Вариант 19 | Казачек И.";
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
+            textBoxIn.Multiline = true;
+            textBoxIn.Dock = DockStyle.Fill;
+            textBoxIn.ScrollBars = ScrollBars.Vertical;
+
+            groupBoxIn.Controls.Add(textBoxIn);
+
+            // groupBoxOut (right)
+            groupBoxOut.Text = "Результат";
+            groupBoxOut.Dock = DockStyle.Fill;
+
+            textBoxOut.Multiline = true;
+            textBoxOut.Dock = DockStyle.Fill;
+            textBoxOut.ScrollBars = ScrollBars.Vertical;
+
+            groupBoxOut.Controls.Add(textBoxOut);
+
+            // labelFileInfo
+            labelFileInfo.AutoSize = true;
+            labelFileInfo.ForeColor = Color.DarkBlue;
+            labelFileInfo.Location = new Point(10, 140);
+            labelFileInfo.Text = "";
+
+            // main form
+            ClientSize = new Size(1000, 600);
+
+            Controls.Add(groupBoxOut);
+            Controls.Add(groupBoxIn);
+            Controls.Add(labelFileInfo);
+            Controls.Add(panelButtons);
+            Controls.Add(groupBoxTask);
+
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Спринт 6 | Task 6 | Вариант 19 | Казачек И.";
+            MinimumSize = new Size(1000, 600);
+
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }

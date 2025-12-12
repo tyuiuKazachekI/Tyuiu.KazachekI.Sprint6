@@ -1,63 +1,115 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Tyuiu.KazachekI.Sprint6.Task4.V14
 {
     partial class FormMain
     {
-        private PictureBox pictureBoxCondition;
+        private GroupBox groupBoxTask;
+        private TextBox textBoxTask;
+        private PictureBox pictureBoxTask;
+        private GroupBox groupBoxChart;
+        private PictureBox pictureBoxChart;
+        private GroupBox groupBoxResult;
         private TextBox textBoxResult;
         private Button buttonCalc;
+        private Button buttonSave;
+        private Button buttonInfo;
 
         private void InitializeComponent()
         {
-            pictureBoxCondition = new PictureBox();
+            groupBoxTask = new GroupBox();
+            textBoxTask = new TextBox();
+            pictureBoxTask = new PictureBox();
+            groupBoxChart = new GroupBox();
+            pictureBoxChart = new PictureBox();
+            groupBoxResult = new GroupBox();
             textBoxResult = new TextBox();
             buttonCalc = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxCondition).BeginInit();
-            SuspendLayout();
-            // 
-            // pictureBoxCondition
-            // 
-            pictureBoxCondition.ImageLocation = "C:\\Users\\Иван\\source\\repos\\Tyuiu.KazachekI.Sprint6\\img\\task4.png";
-            pictureBoxCondition.Location = new Point(20, 20);
-            pictureBoxCondition.Name = "pictureBoxCondition";
-            pictureBoxCondition.Size = new Size(400, 80);
-            pictureBoxCondition.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxCondition.TabIndex = 0;
-            pictureBoxCondition.TabStop = false;
-            // 
-            // textBoxResult
-            // 
-            textBoxResult.Location = new Point(20, 120);
+            buttonSave = new Button();
+            buttonInfo = new Button();
+
+            // groupBoxTask
+            groupBoxTask.Text = "Условие задачи";
+            groupBoxTask.Dock = DockStyle.Top;
+            groupBoxTask.Height = 150;
+
+            textBoxTask.Multiline = true;
+            textBoxTask.ReadOnly = true;
+            textBoxTask.ScrollBars = ScrollBars.Vertical;
+            textBoxTask.Dock = DockStyle.Top;
+            textBoxTask.Height = 50;
+            textBoxTask.Text = "Дан массив для вычисления f(x).\r\nФормула: f(x) = x + 2 + x/(cos(x)+1)";
+
+            pictureBoxTask.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxTask.Dock = DockStyle.Fill;
+
+            groupBoxTask.Controls.Add(pictureBoxTask);
+            groupBoxTask.Controls.Add(textBoxTask);
+
+            // groupBoxChart
+            groupBoxChart.Text = "График";
+            groupBoxChart.Dock = DockStyle.Right;
+            groupBoxChart.Width = 500;
+
+            pictureBoxChart.Dock = DockStyle.Fill;
+            pictureBoxChart.BackColor = Color.White;
+            pictureBoxChart.BorderStyle = BorderStyle.FixedSingle;
+            pictureBoxChart.Paint += pictureBoxChart_Paint;
+
+            groupBoxChart.Controls.Add(pictureBoxChart);
+
+            // groupBoxResult
+            groupBoxResult.Text = "Содержимое файла";
+            groupBoxResult.Dock = DockStyle.Fill;
+
+            textBoxResult.Dock = DockStyle.Fill;
             textBoxResult.Multiline = true;
-            textBoxResult.Name = "textBoxResult";
+            textBoxResult.ReadOnly = true;
             textBoxResult.ScrollBars = ScrollBars.Vertical;
-            textBoxResult.Size = new Size(400, 150);
-            textBoxResult.TabIndex = 1;
-            // 
-            // buttonCalc
-            // 
-            buttonCalc.Location = new Point(20, 280);
-            buttonCalc.Name = "buttonCalc";
-            buttonCalc.Size = new Size(100, 30);
-            buttonCalc.TabIndex = 2;
-            buttonCalc.Text = "Вычислить";
+
+            groupBoxResult.Controls.Add(textBoxResult);
+
+            // Buttons
+            buttonCalc.Text = "Выполнить";
+            buttonCalc.BackColor = Color.LightGreen;
+            buttonCalc.Font = new Font("Arial", 11, FontStyle.Bold);
+            buttonCalc.Dock = DockStyle.Left;
+            buttonCalc.Width = 150;
             buttonCalc.Click += buttonCalc_Click;
-            // 
-            // FormMain
-            // 
-            ClientSize = new Size(450, 330);
-            Controls.Add(pictureBoxCondition);
-            Controls.Add(textBoxResult);
-            Controls.Add(buttonCalc);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            MaximizeBox = false;
-            Name = "FormMain";
+
+            buttonSave.Text = "Сохранить";
+            buttonSave.BackColor = Color.LightSalmon;
+            buttonSave.Font = new Font("Arial", 11, FontStyle.Bold);
+            buttonSave.Dock = DockStyle.Left;
+            buttonSave.Width = 150;
+            buttonSave.Click += buttonSave_Click;
+
+            buttonInfo.Text = "Инфо";
+            buttonInfo.BackColor = Color.LightSkyBlue;
+            buttonInfo.Font = new Font("Arial", 11, FontStyle.Bold);
+            buttonInfo.Dock = DockStyle.Right;
+            buttonInfo.Width = 150;
+            buttonInfo.Click += buttonInfo_Click;
+
+            Panel panelButtons = new Panel();
+            panelButtons.Dock = DockStyle.Bottom;
+            panelButtons.Height = 50;
+            panelButtons.Controls.Add(buttonCalc);
+            panelButtons.Controls.Add(buttonSave);
+            panelButtons.Controls.Add(buttonInfo);
+
+            // Form
+            ClientSize = new Size(1000, 600);
+            Text = "Спринт 6 | Таск 4 | Вариант 14 | Казачек И.";
+            FormBorderStyle = FormBorderStyle.Sizable;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Спринт #6 | Task 4 | Вариант 14";
-            ((System.ComponentModel.ISupportInitialize)pictureBoxCondition).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+
+            Controls.Add(groupBoxResult);
+            Controls.Add(groupBoxChart);
+            Controls.Add(groupBoxTask);
+            Controls.Add(panelButtons);
         }
     }
 }

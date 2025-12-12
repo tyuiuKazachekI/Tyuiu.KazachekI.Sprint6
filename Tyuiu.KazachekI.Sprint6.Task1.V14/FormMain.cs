@@ -18,18 +18,26 @@ namespace Tyuiu.KazachekI.Sprint6.Task1.V14
         {
             try
             {
-                int start = -5; // диапазон фиксирован
-                int stop = 5;
+                int xStart = -5;
+                int xStop = 5;
 
-                double[] results = ds.GetMassFunction(start, stop);
+                var vals = ds.GetMassFunction(xStart, xStop);
 
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < results.Length; i++)
+                var sb = new StringBuilder();
+
+                sb.AppendLine("****************************");
+                sb.AppendLine("*   x    |     f(x)        *");
+                sb.AppendLine("****************************");
+
+                for (int i = 0; i < vals.Length; i++)
                 {
-                    sb.AppendLine($"x = {start + i}, f(x) = {results[i]:F2}");
+                    int x = xStart + i;
+                    sb.AppendLine($"*  {x,4}  |  {vals[i],10:F2}  *");
                 }
 
-                textBoxResult.Text = sb.ToString();
+                sb.AppendLine("****************************");
+
+                textBoxResult_KI.Text = sb.ToString();
             }
             catch (Exception ex)
             {
@@ -39,7 +47,12 @@ namespace Tyuiu.KazachekI.Sprint6.Task1.V14
 
         private void buttonInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Таск 1 Sprint6, вариант 14 выполнен студентом Казачек Иван", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                "Таск 1 выполнен студентом группы ИСТНб-25-1 Казачек И.",
+                "Сообщение",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }

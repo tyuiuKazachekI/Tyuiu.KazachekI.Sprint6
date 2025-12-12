@@ -1,74 +1,172 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Tyuiu.KazachekI.Sprint6.Task7.V2
 {
     partial class FormMain
     {
+        private System.ComponentModel.IContainer components = null;
+
+        private GroupBox groupBoxTask;
+        private GroupBox groupBoxIn;
+        private GroupBox groupBoxOut;
+
+        private FlowLayoutPanel panelButtons;
+
         private Button buttonLoad;
         private Button buttonProcess;
         private Button buttonSave;
+        private Button buttonInfo;
+
         private DataGridView dataGridViewIn;
         private DataGridView dataGridViewOut;
-        private Label labelIn;
-        private Label labelOut;
+
+        private Label labelFileInfo;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && components != null)
+                components.Dispose();
+            base.Dispose(disposing);
+        }
 
         private void InitializeComponent()
         {
-            this.buttonLoad = new Button();
-            this.buttonProcess = new Button();
-            this.buttonSave = new Button();
-            this.dataGridViewIn = new DataGridView();
-            this.dataGridViewOut = new DataGridView();
-            this.labelIn = new Label();
-            this.labelOut = new Label();
+            components = new System.ComponentModel.Container();
 
+            groupBoxTask = new GroupBox();
+            Label labelTask = new Label();
+
+            panelButtons = new FlowLayoutPanel();
+            buttonLoad = new Button();
+            buttonProcess = new Button();
+            buttonSave = new Button();
+            buttonInfo = new Button();
+
+            groupBoxIn = new GroupBox();
+            dataGridViewIn = new DataGridView();
+
+            groupBoxOut = new GroupBox();
+            dataGridViewOut = new DataGridView();
+
+            labelFileInfo = new Label();
+
+            SuspendLayout();
+
+            //
+            // groupBoxTask
+            //
+            groupBoxTask.Text = "Условие задачи";
+            groupBoxTask.Dock = DockStyle.Top;
+            groupBoxTask.Height = 80;
+
+            labelTask.Text = "Загрузить CSV → заменить чётные элементы во 2-й строке на 555.";
+            labelTask.Dock = DockStyle.Fill;
+            labelTask.Padding = new Padding(10);
+
+            groupBoxTask.Controls.Add(labelTask);
+
+            //
+            // Панель кнопок
+            //
+            panelButtons.Dock = DockStyle.Top;
+            panelButtons.Height = 60;
+            panelButtons.Padding = new Padding(10);
+            panelButtons.FlowDirection = FlowDirection.LeftToRight;
+
+            //
             // buttonLoad
-            this.buttonLoad.Text = "Загрузить CSV";
-            this.buttonLoad.Location = new System.Drawing.Point(20, 20);
-            this.buttonLoad.Size = new System.Drawing.Size(140, 30);
-            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
+            //
+            buttonLoad.Size = new Size(42, 42);
+            buttonLoad.BackgroundImage = Image.FromFile(@"C:\Users\Иван\source\repos\Tyuiu.KazachekI.Sprint6\img\folder_add.png");
+            buttonLoad.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonLoad.Click += buttonLoad_Click;
 
+            //
             // buttonProcess
-            this.buttonProcess.Text = "Обработать";
-            this.buttonProcess.Location = new System.Drawing.Point(180, 20);
-            this.buttonProcess.Size = new System.Drawing.Size(120, 30);
-            this.buttonProcess.Click += new System.EventHandler(this.buttonProcess_Click);
+            //
+            buttonProcess.Size = new Size(42, 42);
+            buttonProcess.BackgroundImage = Image.FromFile(@"C:\Users\Иван\source\repos\Tyuiu.KazachekI.Sprint6\img\page_white_go.png");
+            buttonProcess.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonProcess.Enabled = false;
+            buttonProcess.Click += buttonProcess_Click;
 
+            //
             // buttonSave
-            this.buttonSave.Text = "Сохранить CSV";
-            this.buttonSave.Location = new System.Drawing.Point(320, 20);
-            this.buttonSave.Size = new System.Drawing.Size(140, 30);
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            //
+            buttonSave.Size = new Size(42, 42);
+            buttonSave.BackgroundImage = Image.FromFile(@"C:\Users\Иван\source\repos\Tyuiu.KazachekI.Sprint6\img\save.png");
+            buttonSave.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonSave.Enabled = false;
+            buttonSave.Click += buttonSave_Click;
 
-            // dataGridViewIn
-            this.dataGridViewIn.Location = new System.Drawing.Point(20, 80);
-            this.dataGridViewIn.Size = new System.Drawing.Size(440, 160);
+            //
+            // buttonInfo
+            //
+            buttonInfo.Size = new Size(42, 42);
+            buttonInfo.BackgroundImage = Image.FromFile(@"C:\Users\Иван\source\repos\Tyuiu.KazachekI.Sprint6\img\help.png");
+            buttonInfo.BackgroundImageLayout = ImageLayout.Stretch;
+            buttonInfo.Click += buttonInfo_Click;
 
-            // dataGridViewOut
-            this.dataGridViewOut.Location = new System.Drawing.Point(20, 280);
-            this.dataGridViewOut.Size = new System.Drawing.Size(440, 160);
+            panelButtons.Controls.Add(buttonLoad);
+            panelButtons.Controls.Add(buttonProcess);
+            panelButtons.Controls.Add(buttonSave);
+            panelButtons.Controls.Add(buttonInfo);
 
-            // labelIn
-            this.labelIn.Text = "Исходная матрица";
-            this.labelIn.Location = new System.Drawing.Point(20, 60);
+            //
+            // groupBoxIn
+            //
+            groupBoxIn.Text = "Исходная матрица";
+            groupBoxIn.Dock = DockStyle.Left;
+            groupBoxIn.Width = 480;
 
-            // labelOut
-            this.labelOut.Text = "Результат";
-            this.labelOut.Location = new System.Drawing.Point(20, 260);
+            dataGridViewIn.Dock = DockStyle.Fill;
+            dataGridViewIn.ReadOnly = true;
+            dataGridViewIn.RowHeadersWidth = 50;
+            dataGridViewIn.AllowUserToAddRows = false;
+            dataGridViewIn.AllowUserToDeleteRows = false;
 
+            groupBoxIn.Controls.Add(dataGridViewIn);
+
+            //
+            // groupBoxOut
+            //
+            groupBoxOut.Text = "Обработанная матрица";
+            groupBoxOut.Dock = DockStyle.Fill;
+
+            dataGridViewOut.Dock = DockStyle.Fill;
+            dataGridViewOut.ReadOnly = true;
+            dataGridViewOut.RowHeadersWidth = 50;
+            dataGridViewOut.AllowUserToAddRows = false;
+            dataGridViewOut.AllowUserToDeleteRows = false;
+
+            groupBoxOut.Controls.Add(dataGridViewOut);
+
+            //
+            // labelFileInfo
+            //
+            labelFileInfo.AutoSize = true;
+            labelFileInfo.ForeColor = Color.DarkBlue;
+            labelFileInfo.Location = new Point(20, 150);
+            labelFileInfo.Text = "Файл не выбран";
+
+            //
             // FormMain
-            this.ClientSize = new System.Drawing.Size(490, 470);
-            this.Controls.Add(this.buttonLoad);
-            this.Controls.Add(this.buttonProcess);
-            this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.dataGridViewIn);
-            this.Controls.Add(this.dataGridViewOut);
-            this.Controls.Add(this.labelIn);
-            this.Controls.Add(this.labelOut);
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Text = "Спринт 6 | Таск 7 | Вариант 2 | Казачек И.";
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
+            //
+            ClientSize = new Size(1100, 650);
+            Controls.Add(groupBoxOut);
+            Controls.Add(groupBoxIn);
+            Controls.Add(labelFileInfo);
+            Controls.Add(panelButtons);
+            Controls.Add(groupBoxTask);
+
+            StartPosition = FormStartPosition.CenterScreen;
+            MinimumSize = new Size(1000, 600);
+            Text = "Спринт 6 | Task 7 | Вариант 2 | Казачек И.";
+
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task3.V28
 
         private void LoadInitialMatrix()
         {
-            matrix = ds.Calculate(null); // Получаем исходный массив
+            matrix = ds.Calculate(null);
             DisplayMatrix(matrix);
         }
 
@@ -25,7 +25,6 @@ namespace Tyuiu.KazachekI.Sprint6.Task3.V28
         {
             dataGridViewResult.ColumnCount = mat.GetLength(1);
             dataGridViewResult.RowCount = mat.GetLength(0);
-
             for (int i = 0; i < mat.GetLength(0); i++)
                 for (int j = 0; j < mat.GetLength(1); j++)
                     dataGridViewResult.Rows[i].Cells[j].Value = mat[i, j];
@@ -33,14 +32,16 @@ namespace Tyuiu.KazachekI.Sprint6.Task3.V28
 
         private void buttonReplace_Click(object sender, EventArgs e)
         {
-            matrix = ds.Calculate(matrix); // Заменяем четные в 4-й строке
+            matrix = ds.Calculate(matrix);
             DisplayMatrix(matrix);
         }
 
         private void buttonInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Таск 3, Вариант 28 выполнен студентом Казачек И.\nЗадача: заменить четные значения в четвертой строке на 0 и вывести массив в DataGridView.",
-                "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                "Таск 3, Вариант 28 выполнен студентом Казачек И.\nЗадача: заменить четные значения в четвертой строке на 0 и вывести массив в DataGridView.",
+                "Справка", MessageBoxButtons.OK, MessageBoxIcon.Information
+            );
         }
     }
 }

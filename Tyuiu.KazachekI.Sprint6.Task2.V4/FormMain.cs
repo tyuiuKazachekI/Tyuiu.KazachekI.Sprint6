@@ -9,7 +9,6 @@ namespace Tyuiu.KazachekI.Sprint6.Task2.V4
     {
         private DataService dataService_IK = new DataService();
         private double[] functionValues_IK = Array.Empty<double>();
-
         private int startX_IK = -5;
         private int endX_IK = 5;
 
@@ -43,27 +42,18 @@ namespace Tyuiu.KazachekI.Sprint6.Task2.V4
 
             using (Pen axisPen = new Pen(Color.Black, 2))
             {
-                // Îñü X
-                g.DrawLine(axisPen, 20, height / 2 + 20, width + 20, height / 2 + 20);
-
-                // Îñü Y
-                g.DrawLine(axisPen, 20, 20, 20, height + 20);
+                g.DrawLine(axisPen, 20, height / 2 + 20, width + 20, height / 2 + 20); // X
+                g.DrawLine(axisPen, 20, 20, 20, height + 20); // Y
             }
 
             double min = double.MaxValue;
             double max = double.MinValue;
-
             foreach (double v in functionValues_IK)
             {
                 if (v < min) min = v;
                 if (v > max) max = v;
             }
-
-            if (Math.Abs(max - min) < 0.0001)
-            {
-                max = min + 2;
-                min = min - 2;
-            }
+            if (Math.Abs(max - min) < 0.0001) { max = min + 2; min = min - 2; }
 
             double dx = width / (double)(functionValues_IK.Length - 1);
             double scaleY = height / (max - min);
@@ -74,10 +64,8 @@ namespace Tyuiu.KazachekI.Sprint6.Task2.V4
                 {
                     float x1 = (float)(20 + i * dx);
                     float x2 = (float)(20 + (i + 1) * dx);
-
                     float y1 = (float)(20 + height - (functionValues_IK[i] - min) * scaleY);
                     float y2 = (float)(20 + height - (functionValues_IK[i + 1] - min) * scaleY);
-
                     g.DrawLine(graphPen, x1, y1, x2, y2);
                 }
             }
@@ -88,15 +76,8 @@ namespace Tyuiu.KazachekI.Sprint6.Task2.V4
                 {
                     float x = (float)(20 + i * dx);
                     float y = (float)(20 + height - (functionValues_IK[i] - min) * scaleY);
-
                     g.FillEllipse(Brushes.Red, x - 3, y - 3, 6, 6);
-
-                    g.DrawString(
-                        $"({startX_IK + i}, {functionValues_IK[i]:F2})",
-                        labelFont,
-                        Brushes.DarkBlue,
-                        x + 5, y - 15
-                    );
+                    g.DrawString($"({startX_IK + i}, {functionValues_IK[i]:F2})", labelFont, Brushes.DarkBlue, x + 5, y - 15);
                 }
             }
         }
