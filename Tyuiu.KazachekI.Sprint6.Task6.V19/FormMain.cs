@@ -53,11 +53,9 @@ namespace Tyuiu.KazachekI.Sprint6.Task6.V19
                 return;
             }
 
-            // Сохранение исходного текста во временный файл
             string tempPath = Path.GetTempFileName();
             File.WriteAllText(tempPath, textBoxIn.Text);
 
-            // Обработка через DataService
             string result = ds.CollectTextFromFile(tempPath);
 
             textBoxOut.Text = result;

@@ -21,9 +21,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task7.V2
             InitializeComponent();
         }
 
-        // ╔══════════════════════════════════════════════╗
-        // ║                  ЗАГРУЗКА CSV                ║
-        // ╚══════════════════════════════════════════════╝
+    
         private void buttonLoad_Click(object sender, EventArgs e)
         {
             try
@@ -55,9 +53,6 @@ namespace Tyuiu.KazachekI.Sprint6.Task7.V2
             }
         }
 
-        // ╔══════════════════════════════════════════════╗
-        // ║               ЗАГРУЗКА МАТРИЦЫ              ║
-        // ╚══════════════════════════════════════════════╝
         private int[,] LoadMatrix(string path)
         {
             string[] lines = File.ReadAllLines(path);
@@ -79,9 +74,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task7.V2
             return m;
         }
 
-        // ╔══════════════════════════════════════════════╗
-        // ║                 ОБРАБОТКА CSV                ║
-        // ╚══════════════════════════════════════════════╝
+        
         private void buttonProcess_Click(object sender, EventArgs e)
         {
             if (matrix == null)
@@ -110,9 +103,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task7.V2
             buttonSave.Enabled = true;
         }
 
-        // ╔══════════════════════════════════════════════╗
-        // ║                 СОХРАНЕНИЕ CSV               ║
-        // ╚══════════════════════════════════════════════╝
+  
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (resultMatrix == null)
@@ -154,9 +145,6 @@ namespace Tyuiu.KazachekI.Sprint6.Task7.V2
             }
         }
 
-        // ╔══════════════════════════════════════════════╗
-        // ║                   О ПРОГРАММЕ                ║
-        // ╚══════════════════════════════════════════════╝
         private void buttonInfo_Click(object sender, EventArgs e)
         {
             Form f = new Form
@@ -203,10 +191,7 @@ namespace Tyuiu.KazachekI.Sprint6.Task7.V2
             f.ShowDialog();
         }
 
-        // ╔══════════════════════════════════════════════╗
-        // ║         ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ             ║
-        // ╚══════════════════════════════════════════════╝
-
+      
         private DataTable ConvertToTable(int[,] arr)
         {
             int rows = arr.GetLength(0);
